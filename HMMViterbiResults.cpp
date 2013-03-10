@@ -175,9 +175,9 @@ void HMMViterbiResults::calculateProbabilities(HMMProbabilities* previousProbs) 
 string HMMViterbiResults::stateHistogramResultsString() {
 	stringstream ss;
 
-	for (int i = 0; i < numStates; i++) {
+	for (int i = 1; i < numStates; i++) {
 		ss 
-			<< i + 1 
+			<< i  
 			<< "="
 			<< stateCounts[i];
 
@@ -199,9 +199,9 @@ string HMMViterbiResults::stateHistogramResultsString() {
 string HMMViterbiResults::segmentHistogramResultsString() {
 	stringstream ss;
 
-	for (int i = 0; i < numStates; i++) {
+	for (int i = 1; i < numStates; i++) {
 		ss 
-			<< i + 1 
+			<< i  
 			<< "="
 			<< segmentCounts[i];
 
@@ -256,6 +256,9 @@ string HMMViterbiResults::segmentResultsString() {
 		counter++;
 		if (counter % 5 == 0)
 			ss << "\n";
+
+		if (counter >= 10)
+			break;
 	}
 
 	return StringUtilities::xmlResult("segment_list", ss.str());

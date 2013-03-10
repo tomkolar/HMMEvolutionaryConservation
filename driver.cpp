@@ -36,7 +36,7 @@ int main( int argc, char *argv[] ) {
 	string conservedCountsFileName = argv[4];
 */
 	// Set Parameters
-	string multiAlignFileName = "c:/Users/kolart/Documents/Genome540/Assignment8/ENm006_short.aln";
+	string multiAlignFileName = "c:/Users/kolart/Documents/Genome540/Assignment8/ENm012.aln";
 	int iterations = 1;
 	string neutralCountsFileName = "c:/Users/kolart/Documents/Genome540/Assignment8/anc_rep_counts.txt";
 	string conservedCountsFileName = "c:/Users/kolart/Documents/Genome540/Assignment8/codon1_2_counts.txt";

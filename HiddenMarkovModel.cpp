@@ -87,6 +87,9 @@ HiddenMarkovModel::HiddenMarkovModel(MultipleAlignmentFile* aMultiAlignFile,
 	multiAlignFile = aMultiAlignFile;
 	modelBuilt = false;
 	probabilities = HMMProbabilities::initialProbabilities(neutralCountsFileName, conservedCountsFileName);
+	
+	// Print out the initial probabilities
+	cout << probabilities->probabilitiesResultsString();
 }
 
 // Destructor
@@ -666,10 +669,7 @@ HMMViterbiResults* HiddenMarkovModel::gatherViterbiResults(int iteration) {
 	results->segments[previousState].push_back(currentSegment);
 
 	// Calculate the probabilities
-/* Leave out since we only want to report the input parameters, not the recalculated ones
-   Normally we would not do this!
-//	results->calculateProbabilities(probabilities);
-*/
+	results->calculateProbabilities(probabilities);
 
 	// Return the results
 	return results;
