@@ -19,7 +19,7 @@
 using namespace std;
 
 int main( int argc, char *argv[] ) {
-/*
+
 	// Check that file name and iterations were entered as arguments
 	if (argc < 5) {
 			cout << "Invalid # of arguments\n";
@@ -34,21 +34,23 @@ int main( int argc, char *argv[] ) {
 	int iterations = atoi(argv[2]);
 	string neutralCountsFileName = argv[3];
 	string conservedCountsFileName = argv[4];
-*/
+/*
 	// Set Parameters
 	string multiAlignFileName = "c:/Users/kolart/Documents/Genome540/Assignment8/ENm012.aln";
 	int iterations = 1;
 	string neutralCountsFileName = "c:/Users/kolart/Documents/Genome540/Assignment8/anc_rep_counts.txt";
 	string conservedCountsFileName = "c:/Users/kolart/Documents/Genome540/Assignment8/codon1_2_counts.txt";
-
+*/
 	// Create the fasta file object
 	MultipleAlignmentFile* multiAlignFile =
 		new MultipleAlignmentFile(multiAlignFileName);
-	cout << "Multi Align's done\n";
+	cout << "Multi Align Created.\n";
 
 	// Create the Hidden Markov Model
 	HiddenMarkovModel hmm(multiAlignFile, neutralCountsFileName, conservedCountsFileName);
+	cout << "HMM Created.\n";
 	hmm.viterbiTraining(iterations);
+	cout << "Viterbi Path Calculated.\n";
 
 	cout << hmm.viterbiResultsString();
 	cout << "Fred";

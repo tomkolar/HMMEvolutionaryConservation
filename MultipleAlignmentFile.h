@@ -50,8 +50,8 @@ public:
 	// =============================================
 	const int getSequenceLength();  // length of dnaSequence
 	const int getStartPosition();  // start position on chromosome
-	string& MultipleAlignmentFile::getFileName();
-	vector<string>& MultipleAlignmentFile::getSequence();
+	string& getFileName();
+	vector<string>& getSequence();
 
 private:
 	// Attributes

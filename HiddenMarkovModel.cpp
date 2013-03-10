@@ -122,10 +122,12 @@ void HiddenMarkovModel::viterbiTraining(int numIterations) {
 	for (int iteration = 1; iteration <= numIterations; iteration++) {
 		// Build the model and calculate the weights
 		buildAndCalculateModel(false);
+		cout << "Model Built.\n";
 
 		// Gather the viterbi reuslts
 		HMMViterbiResults* aViterbiResults = gatherViterbiResults(iteration);
 		viterbiResults.push_back(aViterbiResults);
+		cout << "Viterbi Results Gathered.\n";
 
 		// Reset the probabilities to the viterbi calculated ones for the next
 		// iteration
@@ -328,7 +330,7 @@ void HiddenMarkovModel::buildAndCalculateModel(bool calculateForward) {
 		// Iterate through the sequence and create model on the fly
 		HMMPosition* previousPosition = startPosition;
 		int seqLength = sequence.size();
-		for (int seqPos = 0; seqPos <= seqLength -3; seqPos++) {
+		for (int seqPos = 0; seqPos <= seqLength - 1; seqPos++) {
 			// Create a Position object with one node for each state
 			HMMPosition* aPosition = new HMMPosition(seqPos, sequence[seqPos], numStates, this);
 
@@ -629,7 +631,7 @@ HMMViterbiResults* HiddenMarkovModel::gatherViterbiResults(int iteration) {
 	pair<int, int> currentSegment = pair<int,int>(-1,-1);
 	int offset = multiAlignFile->getStartPosition();
 
-	while (aNode->state != 0) {
+	while (aNode->id != 0) {
 		int currentState = aNode->state;
 		
 		// Update number of occurrences for a state
